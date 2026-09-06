@@ -215,6 +215,7 @@ class SubagentBatchService:
                 channel_user_id=spec.get("channel_user_id"),
                 is_internal=spec.get("is_internal") is True,
                 authz_attributes=spec.get("authz_attributes"),
+                knowledge_scope=spec.get("knowledge_scope"),
                 execution_capacity=self._execution_capacity,
             )
             prompt = f"Durable batch item key: {item['item_key']}\nThis item may be retried after a worker crash. Keep side effects idempotent and use the item key as the idempotency identity.\n\n{item['prompt']}"
