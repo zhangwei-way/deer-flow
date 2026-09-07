@@ -79,17 +79,6 @@ Composer drafts are tab-scoped browser state. `core/threads/composer-draft.ts` s
 
 Auth UI note: the login page's "keep me signed in" option submits only `remember_me` to the Gateway and may persist only the email address through `core/auth/remember-login.ts`. Passwords and tokens must never be stored in frontend storage; the `HttpOnly access_token` and readable `csrf_token` cookies remain Gateway-owned.
 
-The RAGFlow management UI lives at `/workspace/knowledge` with its domain code
-under `core/knowledge/`. It is gated by `/api/features ->
-knowledge_base.enabled`, keeps dataset/document data only in TanStack Query's
-browser cache, and subscribes to `/api/knowledge/events` with `EventSource` for
-parsing counters. Browser `FormData` uploads go directly to the Gateway; do not
-introduce a frontend upload-storage path. Dataset and document delete controls
-must remain admin-only, and every list/detail view must retain the tenant-shared
-privacy banner. Unsupported chunk/pipeline/Chat/Agent work links to the
-credential-free `knowledge_base.management_url`; no RAGFlow API key or error
-payload containing one may enter frontend state, logs, or rendered copy.
-
 Custom-agent chats may receive the page-local knowledge-scope capability from
 `/api/features -> knowledge_base.scope_selection_enabled`. Only
 `AgentChatPage` passes `KnowledgeScopeSelector` into the optional `InputBox`
