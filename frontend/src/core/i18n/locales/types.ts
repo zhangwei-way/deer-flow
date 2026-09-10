@@ -396,7 +396,7 @@ export interface Translations {
 
   // Scheduled tasks
   scheduledTasks: {
-    scheduleType: { cron: string; once: string };
+    scheduleType: { cron: string; once: string; interval: string };
     preset: {
       label: string;
       hourly: string;
@@ -414,6 +414,11 @@ export interface Translations {
       cronPlaceholder: string;
       runAt: string;
       timezone: string;
+      intervalAmount: string;
+      intervalUnitSeconds: string;
+      intervalUnitMinutes: string;
+      intervalUnitHours: string;
+      intervalMinHint: string;
     };
     weekdays: {
       mon: string;
@@ -430,6 +435,8 @@ export interface Translations {
       title: string;
       taskTitle: string;
       prompt: string;
+      agent: string;
+      leadAgent: string;
       submit: string;
       fillRequired: string;
     };
@@ -449,9 +456,11 @@ export interface Translations {
       allTypes: string;
       cron: string;
       once: string;
+      interval: string;
     };
     detail: {
       contextMode: string;
+      agent: string;
       thread: string;
       lastThread: string;
       schedule: string;
